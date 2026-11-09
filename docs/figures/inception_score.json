@@ -1,0 +1,206 @@
+{
+ "train": {
+  "is_mean": 11.246816084558958,
+  "is_std": 0.16685505724034802
+ },
+ "ditdhS_decXLgan_last_cfg1.0": {
+  "is_mean": 10.109008574684072,
+  "is_std": 0.11793859234850752
+ },
+ "ditdh_s_h512_decXLgan_last_cfg1.0": {
+  "is_mean": 9.217360084635022,
+  "is_std": 0.11803860658315807
+ },
+ "ditdh_ti_decXLgan_last_cfg1.0": {
+  "is_mean": 8.891203332488065,
+  "is_std": 0.14340049326833035
+ },
+ "lightningdit_s_decXLgan_last_cfg1.0": {
+  "is_mean": 8.989422417976481,
+  "is_std": 0.10962115917639195
+ },
+ "ditdh_s_h512_noshift_decXLgan_last_cfg1.0": {
+  "is_mean": 8.797435705797756,
+  "is_std": 0.11285373074590122
+ },
+ "ditdh_s_h512_decXLgan_nonoise_last_cfg1.0": {
+  "is_mean": 8.577613349013827,
+  "is_std": 0.07975822416001287
+ },
+ "ditdhS_decXLgan_last_cfg3.0": {
+  "is_mean": 9.968967856929217,
+  "is_std": 0.08672568684564456
+ },
+ "ditdh_s_h512_decXLgan_last_cfg3.0": {
+  "is_mean": 9.798792493964012,
+  "is_std": 0.11095617634247365
+ },
+ "ditdh_ti_decXLgan_last_cfg3.0": {
+  "is_mean": 9.6062645882733,
+  "is_std": 0.08470968852243899
+ },
+ "lightningdit_s_decXLgan_last_cfg3.0": {
+  "is_mean": 9.619766788502453,
+  "is_std": 0.07987865218113073
+ },
+ "ditdh_s_h512_decXLgan_last_cfg1.25": {
+  "is_mean": 9.436565612524074,
+  "is_std": 0.09217138016611107
+ },
+ "ditdh_s_h512_decXLgan_last_cfg1.5": {
+  "is_mean": 9.578973938145719,
+  "is_std": 0.0928126843196294
+ },
+ "ditdh_s_h512_decXLgan_last_cfg2.0": {
+  "is_mean": 9.726151058833121,
+  "is_std": 0.10726880996495886
+ },
+ "rjf_lightningdit_ti_decXLgan_last_R13.66": {
+  "is_mean": 8.602514636702042,
+  "is_std": 0.11305387732415242
+ },
+ "rjf_lightningdit_s_decXLgan_last_R13.66": {
+  "is_mean": 9.107389513257115,
+  "is_std": 0.10156192034253131
+ },
+ "rjf_ditdh_s_h512_decXLgan_last_R13.66": {
+  "is_mean": 9.286112279926272,
+  "is_std": 0.057004706850646736
+ },
+ "ag_ditdh_s_h512_guide20_w1.25": {
+  "is_mean": 9.904098524526495,
+  "is_std": 0.0860419568452523
+ },
+ "ag_ditdh_s_h512_guide20_w1.42": {
+  "is_mean": 10.010110016071406,
+  "is_std": 0.132418024093553
+ },
+ "ag_ditdh_s_h512_guide20_w1.5": {
+  "is_mean": 10.03061556116452,
+  "is_std": 0.17673448079175472
+ },
+ "ag_ditdh_s_h512_guide20_w2.0": {
+  "is_mean": 9.853326632983658,
+  "is_std": 0.06592545688736354
+ },
+ "ag_ditdh_s_h512_guide40_w1.25": {
+  "is_mean": 9.84508152547355,
+  "is_std": 0.0839219600726054
+ },
+ "ag_ditdh_s_h512_guide40_w1.42": {
+  "is_mean": 9.950456420716696,
+  "is_std": 0.06596019375283986
+ },
+ "ag_ditdh_s_h512_guide40_w1.5": {
+  "is_mean": 9.988625911896976,
+  "is_std": 0.08919273714671178
+ },
+ "ag_ditdh_s_h512_guide40_w2.0": {
+  "is_mean": 9.824086691720339,
+  "is_std": 0.11232628872993262
+ },
+ "ag_ditdh_s_h512_guidelast_w1.25": {
+  "is_mean": 9.52139523359956,
+  "is_std": 0.08895293800881919
+ },
+ "ag_ditdh_s_h512_guidelast_w1.42": {
+  "is_mean": 9.67683006328702,
+  "is_std": 0.0772158798228355
+ },
+ "ag_ditdh_s_h512_guidelast_w1.5": {
+  "is_mean": 9.712984320848733,
+  "is_std": 0.08590326933245493
+ },
+ "ag_ditdh_s_h512_guidelast_w2.0": {
+  "is_mean": 9.855809556719914,
+  "is_std": 0.10979034773586137
+ },
+ "rjf_ag_ditdh_s_h512_R13.66_w1.25": {
+  "is_mean": 9.459824955645132,
+  "is_std": 0.11986012426169007
+ },
+ "rjf_ag_ditdh_s_h512_R13.66_w1.42": {
+  "is_mean": 9.54075399622974,
+  "is_std": 0.16236413895639584
+ },
+ "rjf_ag_ditdh_s_h512_R13.66_w1.5": {
+  "is_mean": 9.5663957390226,
+  "is_std": 0.1638246797591158
+ },
+ "rjf_ag_ditdh_s_h512_R18_w1.25": {
+  "is_mean": 9.675841596165084,
+  "is_std": 0.0892724406465427
+ },
+ "rjf_ag_ditdh_s_h512_R18_w1.42": {
+  "is_mean": 9.74639574145227,
+  "is_std": 0.14712642742142187
+ },
+ "rjf_ag_ditdh_s_h512_R18_w1.5": {
+  "is_mean": 9.75098807997042,
+  "is_std": 0.1110852256478566
+ },
+ "rjf_ag_lightningdit_s_R13.66_w1.25": {
+  "is_mean": 9.439080262907948,
+  "is_std": 0.08574206107809418
+ },
+ "rjf_ag_lightningdit_s_R13.66_w1.42": {
+  "is_mean": 9.543203065036403,
+  "is_std": 0.1136246921602813
+ },
+ "rjf_ag_lightningdit_s_R13.66_w1.5": {
+  "is_mean": 9.578590923557353,
+  "is_std": 0.12652873226857833
+ },
+ "rjf_ag_lightningdit_s_R18_w1.25": {
+  "is_mean": 9.642418281519397,
+  "is_std": 0.08890705294636828
+ },
+ "rjf_ag_lightningdit_s_R18_w1.42": {
+  "is_mean": 9.692085632189938,
+  "is_std": 0.09571091007817144
+ },
+ "rjf_ag_lightningdit_s_R18_w1.5": {
+  "is_mean": 9.685236226160534,
+  "is_std": 0.0877902308423422
+ },
+ "rfm_lightningdit_ti_decXLgan_last_R13.66": {
+  "is_mean": 8.58634231076862,
+  "is_std": 0.11974413201351694
+ },
+ "rfm_lightningdit_ti_decXLgan_last_R18": {
+  "is_mean": 8.913623290439508,
+  "is_std": 0.08303478310848142
+ },
+ "rfm_lightningdit_s_decXLgan_last_R13.66": {
+  "is_mean": 9.014948372371755,
+  "is_std": 0.14090632851502607
+ },
+ "rfm_lightningdit_s_decXLgan_last_R18": {
+  "is_mean": 9.31530500568761,
+  "is_std": 0.06617493422302385
+ },
+ "rfm_ag_lightningdit_s_R13.66_w1.25": {
+  "is_mean": 9.331199218645645,
+  "is_std": 0.13786883058914826
+ },
+ "rfm_ag_lightningdit_s_R13.66_w1.42": {
+  "is_mean": 9.503037280822404,
+  "is_std": 0.14745183574778967
+ },
+ "rfm_ag_lightningdit_s_R13.66_w1.5": {
+  "is_mean": 9.552469201261934,
+  "is_std": 0.11827655371258963
+ },
+ "rfm_ag_lightningdit_s_R18_w1.25": {
+  "is_mean": 9.5947751003045,
+  "is_std": 0.12926873730811358
+ },
+ "rfm_ag_lightningdit_s_R18_w1.42": {
+  "is_mean": 9.666415405075101,
+  "is_std": 0.13080027436052669
+ },
+ "rfm_ag_lightningdit_s_R18_w1.5": {
+  "is_mean": 9.67181940041291,
+  "is_std": 0.15176497471135034
+ }
+}
