@@ -9,10 +9,11 @@ Code from other projects and its licenses: [THIRD_PARTY_NOTICES.md](../THIRD_PAR
 - `src/stage2/models/lightningDiT.py`: `forward_with_cfg` takes `cfg_interval=(t_min, t_max)` like DDT (CFG and AutoGuidance sampling crashed otherwise).
 - `src/stage2/transport/spherical.py`: RJF (`path_type: 'Spherical'`): per-token sphere, slerp path, tangent velocity, Jacobi weight
   (`jacobi_weight: false` gives RFM), exponential-map Euler sampler with output radius `sphere_radius`.
-- `src/stage2/transport/`, `src/stage2/models/DDT.py`: x-prediction (`prediction: 'x'`) and a base head with internal guidance
-  (`base_model_depth`, `guidance.method: 'internal'`), following RAEv2 (experiments in progress).
+- `src/stage2/transport/`, `src/stage2/models/DDT.py`: x-prediction (`prediction: 'x'`) and a base head (REPA head) with internal guidance
+  (`base_model_depth`, `guidance.method: 'internal'`; with x- or velocity prediction), following RAEv2.
+- `src/stage1/encoders/cifar_dino.py`: `layers` averages the patch tokens of several encoder blocks (RAEv2 multi-layer representation; experiment in progress).
 - `src/train.py`, `src/sample.py`: 32px / 10-class support; resuming from `ep-last.pt` (`src/utils/resume_utils.py`);
-  `src/sample.py --per-class N --out <file>` for a grid with one class per row.
+  `src/sample.py --per-class N --out <file>` for a grid with one class per column.
 - `pyproject.toml` / `uv.lock`: environment managed with uv instead of conda.
 - `scripts/`: CIFAR-10 data preparation, launchers for training and evaluation, IS, memorization and the analyses of the experiments.
 

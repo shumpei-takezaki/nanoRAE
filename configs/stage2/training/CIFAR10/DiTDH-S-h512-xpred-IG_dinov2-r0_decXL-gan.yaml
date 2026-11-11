@@ -1,4 +1,4 @@
-# Experiment 16 (RAEv2): x-prediction + a base head after body block 4 of 12 (official: 8 of 28), trained with the same loss (REPA as x-prediction); internal guidance base + w (full - base). Otherwise identical to DiTDH-S-h512-xpred_dinov2-r0_decXL-gan.yaml.
+# Experiment 16 (RAEv2): x-prediction + a base head after body block 4 of 12 (official: 8 of 28), trained with the same loss (no REPA loss, as in the official ImageNet config); internal guidance base + w (full - base). Otherwise identical to DiTDH-S-h512-xpred_dinov2-r0_decXL-gan.yaml.
 stage_1:
   target: stage1.RAE
   params:

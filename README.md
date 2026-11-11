@@ -20,6 +20,8 @@ and follow-up work, on one GPU. Currently on CIFAR-10 (more datasets coming), bu
 
 ## 📰 Updates
 
+- **2026-11-11 (v0.6):** RAEv2 ([Improved Baselines with Representation Autoencoders](https://arxiv.org/abs/2605.18324)): x-prediction,
+  REPA head and REPA Guidance (internal guidance), with x- vs. velocity prediction. Best FID so far: 4.70. The encoder package is now `nanodino`.
 - **2026-11-09 (v0.5):** renamed to nanoRAE; reorganized README and docs (pretrained weights, training, training curves);
   experiments renumbered (RAE first, then RJF); FID reference statistics on Hugging Face; third-party license notices.
 - **2026-11-09 (v0.4):** AutoGuidance, RJF ([Learning on the Manifold](https://arxiv.org/abs/2602.10099)), RFM and RJF + AutoGuidance.
@@ -37,7 +39,8 @@ Generation on CIFAR-10 (FID on 50k samples against CIFAR-10 train):
 | DiT<sup>DH</sup>-S, official 2048-wide head | – | 13.59 |
 | DiT<sup>DH</sup>-S, 512-wide head (default) | – | 7.94 |
 | DiT<sup>DH</sup>-S, 512-wide head | AutoGuidance | 6.48 |
-| LightningDiT-S/1 + RJF | AutoGuidance | **6.07** |
+| LightningDiT-S/1 + RJF | AutoGuidance | 6.07 |
+| DiT<sup>DH</sup>-S, 512-wide head, x-prediction + REPA head | REPA Guidance | **4.70** |
 
 <p align="center">
   <img src="docs/figures/samples.png" width="100%" alt="Uncurated CIFAR-10 samples, one class per column">
@@ -47,7 +50,15 @@ Generation on CIFAR-10 (FID on 50k samples against CIFAR-10 train):
 CFG does not help on this latent, as RAE reports for CFG without a guidance interval. The default decoder (ViT-XL + GAN) reaches rFID 5.71
 on the CIFAR-10 test set.
 
-All 14 experiments, with the paper result each one reproduces, are listed in [docs/README.md](docs/README.md).
+All 16 experiments, with the paper result each one reproduces, are listed in [docs/README.md](docs/README.md).
+
+## 🗺️ Roadmap
+
+🚧 in progress · 📋 planned
+
+- 🚧 RAEv2: multi-layer representations (Stage 1)
+- 📋 Larger encoder: DINOv2 ViT-B/4
+- 📋 More datasets: CIFAR-100, Tiny ImageNet
 
 ## ⚡ Quick start
 
@@ -57,12 +68,12 @@ uv sync                                      # Python 3.12; pulls nanoDINO (enco
 uv run python scripts/prepare_cifar10.py     # downloads CIFAR-10 to data/; writes PNGs, {train,test}.npz and train FID stats (GPU)
 ```
 
-Sample from the default model with the released weights (about 1.8 GB):
+Sample from the best model with the released weights (about 1.8 GB):
 
 ```bash
 uv run hf download shumpei777/nanoRAE --local-dir pretrained_models \
-  --include stage2/ditdh_s_h512_ema.pt stage1/decoder_vitxl_gan.pt encoders/encoder_dinov2_vit_tiny4.pt stats/normalization_stats.pt
-PYTHONPATH=src uv run python src/sample.py --config configs/stage2/sampling/CIFAR10/DiTDH-S-h512_pretrained.yaml   # -> sample.png, one per class
+  --include stage2/xpred_ig_ditdh_s_h512_ema.pt stage1/decoder_vitxl_gan.pt encoders/encoder_dinov2_vit_tiny4.pt stats/normalization_stats.pt
+PYTHONPATH=src uv run python src/sample.py --config configs/stage2/sampling/CIFAR10/DiTDH-S-h512-xpred-IG_pretrained.yaml   # -> sample.png, one per class
 ```
 
 `prepare_cifar10.py` is only needed for training and evaluation, not for sampling.
@@ -83,6 +94,8 @@ PYTHONPATH=src uv run python src/sample.py --config configs/stage2/sampling/CIFA
 - [nanoDINO](https://github.com/shumpei-takezaki/nanoDINO): the CIFAR-10 DINOv2 encoders and the DINO backbone of the discriminator,
   following [DINO](https://github.com/facebookresearch/dino) and [DINOv2](https://github.com/facebookresearch/dinov2).
 - [Learning on the Manifold (RJF)](https://arxiv.org/abs/2602.10099): the analyses in experiments 10 and 11 and the reproduction in experiments 12-14.
+- [RAEv2](https://github.com/nanovisionx/RAEv2) ([Improved Baselines with Representation Autoencoders](https://arxiv.org/abs/2605.18324)):
+  x-prediction, the REPA head and REPA Guidance (experiments 15-16), re-implemented following the official code.
 
 ## 📝 Citation
 
@@ -125,8 +138,20 @@ If you use the RJF experiments (10-14), please also cite:
 }
 ```
 
+If you use the RAEv2 experiments (15-16), please also cite:
+
+```bibtex
+@article{singh2026raev2,
+      title={Improved Baselines with Representation Autoencoders},
+      author={Singh, Jaskirat and Zheng, Boyang and Wu, Zongze and Zhang, Richard and Shechtman, Eli and Xie, Saining},
+      journal={arXiv preprint arXiv:2605.18324},
+      year={2026},
+}
+```
+
 ## 📄 License
 
 MIT ([LICENSE](LICENSE)), as the [official RAE implementation](https://github.com/bytetriper/RAE) it builds on.
 Some third-party parts keep their own licenses, and two of them are **for non-commercial use only** (the RAEv2-derived
-x-prediction / internal guidance, CC BY-NC 4.0, and `src/disc/diffaug.py` from StyleGAN-T): see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+x-prediction / REPA head / internal guidance / multi-layer encoder output, CC BY-NC 4.0, and `src/disc/diffaug.py` from StyleGAN-T): see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The weights of experiments 15-16 were trained with the RAEv2-derived code; use them for non-commercial purposes only.

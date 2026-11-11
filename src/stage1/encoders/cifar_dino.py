@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from cifar_dino.export import load_backbone
+from nanodino.export import load_backbone
 
 from . import register_encoder
 
@@ -12,12 +12,14 @@ class CifarDinoViT(nn.Module):
 
     ``normalize=True`` drops the final LayerNorm's affine, as ``Dinov2withNorm`` does for the official RAE.
     Returns patch tokens only (CLS and register tokens are dropped).
+    ``layers`` (0-based block indices) averages the final-LayerNorm patch tokens of several blocks, as RAEv2's
+    ``DINOv2MultiLayerSimpleAddEncoder`` (https://github.com/nanovisionx/RAEv2, CC BY-NC 4.0); None = last block only.
     """
 
     image_mean = (0.4914, 0.4822, 0.4465)  # CIFAR-10 stats used by nanoDINO
     image_std = (0.2470, 0.2435, 0.2616)
 
-    def __init__(self, ckpt_path: str, normalize: bool = True):
+    def __init__(self, ckpt_path: str, normalize: bool = True, layers: list[int] | None = None):
         super().__init__()
         self.encoder, self.meta = load_backbone(ckpt_path)
         if normalize:
@@ -25,6 +27,15 @@ class CifarDinoViT(nn.Module):
         self.encoder.requires_grad_(False)
         self.patch_size = self.encoder.patch_size
         self.hidden_size = self.encoder.embed_dim
+        self.layers = None if layers is None else sorted(int(i) for i in layers)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.encoder.forward_features(x)["patch_tokens"]
+        if self.layers is None:
+            return self.encoder.forward_features(x)["patch_tokens"]
+        e, r, outs = self.encoder, self.encoder.num_register_tokens, []
+        h = e.prepare_tokens(x)
+        for i, blk in enumerate(e.blocks[: self.layers[-1] + 1]):
+            h = blk(h)
+            if i in self.layers:
+                outs.append(e.norm(h)[:, 1 + r :])
+        return torch.stack(outs).mean(0)

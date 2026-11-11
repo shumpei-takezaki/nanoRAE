@@ -284,7 +284,7 @@ class CifarDINOProxy(nn.Module):
 
     def __init__(self, ckpt_path: str, key_depths=(2, 5, 8, 11)):
         super().__init__()
-        from cifar_dino.export import load_backbone
+        from nanodino.export import load_backbone
 
         self.vit, _ = load_backbone(ckpt_path)
         self.vit.requires_grad_(False)

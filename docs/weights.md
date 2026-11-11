@@ -24,7 +24,7 @@ Only inference weights (EMA) are released; training checkpoints are not.
 | `stats/cifar10_test_fid_stats.npz` | the same for the 10k CIFAR-10 test images (not used here; for comparisons against test) | 34 MB |
 | `encoders/disc_dino_vit_tiny4.pt` | DINO (v1) ViT-Tiny/4, frozen backbone of the GAN discriminator (only for training) | 22 MB |
 
-The encoders can also be loaded directly with nanoDINO: `from cifar_dino.export import load_backbone`.
+The encoders can also be loaded directly with nanoDINO: `from nanodino.export import load_backbone`.
 
 All FIDs in this repository are against `cifar10_train_fid_stats.npz` (the real test images score 3.15 against it). To use the same reference without computing it, put it where
 the evaluation scripts read it before running `scripts/prepare_cifar10.py` (which then keeps it):
@@ -67,6 +67,7 @@ Sampling configs: `configs/stage2/sampling/CIFAR10/<name>_pretrained.yaml`.
 | `stage2/rjf_lightningdit_ti_ema.pt` | LightningDiT-Ti/1 + RJF (R = 18) | `LightningDiT-Ti-RJF` | 9.22 | [12](experiments/12_rjf.md) | 0.03 GB |
 | `stage2/rfm_lightningdit_s_ema.pt` | LightningDiT-S/1 + RFM (R = 18) | `LightningDiT-S-RFM` | 7.09 | [13](experiments/13_rfm.md) | 0.1 GB |
 | `stage2/rfm_lightningdit_ti_ema.pt` | LightningDiT-Ti/1 + RFM (R = 18) | `LightningDiT-Ti-RFM` | 9.41 | [13](experiments/13_rfm.md) | 0.03 GB |
+| `stage2/xpred_ditdh_s_h512_ema.pt` | 512-wide head, x-prediction | `DiTDH-S-h512-xpred` | 8.22 | [15](experiments/15_x_prediction.md) | 0.2 GB |
 
 R is the per-token radius the RJF / RFM samples are scaled to before decoding (13.66 is the mean token norm of the normalized latent;
 set `transport.params.sphere_radius` to change it).
@@ -80,5 +81,17 @@ The weak guides are short runs (80 epochs). Download the strong model (above) as
 |---|---|---|---:|---:|---|---:|
 | `stage2/guide_ditdh_ti_ema.pt` | DiT<sup>DH</sup>-S with a 512-wide head | `DiTDH-S-h512-AG` | 1.42 | 6.48 | [09](experiments/09_autoguidance.md) | 0.07 GB |
 | `stage2/guide_ditdh_ti_rjf_ema.pt` | 512-wide head + RJF (R = 13.66) | `DiTDH-S-h512-RJF-AG` | 1.5 | 6.31 | [14](experiments/14_rjf_autoguidance.md) | 0.07 GB |
-| `stage2/guide_lightningdit_ti_rjf_ema.pt` | **LightningDiT-S/1 + RJF (R = 13.66), best** | `LightningDiT-S-RJF-AG` | 1.5 | **6.07** | [14](experiments/14_rjf_autoguidance.md) | 0.03 GB |
+| `stage2/guide_lightningdit_ti_rjf_ema.pt` | LightningDiT-S/1 + RJF (R = 13.66) | `LightningDiT-S-RJF-AG` | 1.5 | 6.07 | [14](experiments/14_rjf_autoguidance.md) | 0.03 GB |
 | `stage2/guide_lightningdit_ti_rfm_ema.pt` | LightningDiT-S/1 + RFM (R = 13.66) | `LightningDiT-S-RFM-AG` | 1.5 | 6.11 | [14](experiments/14_rjf_autoguidance.md) | 0.03 GB |
+
+## REPA Guidance (internal guidance)
+
+Models with a REPA head (a base head after body block 4) guide themselves; no separate guide is needed. FID on 50k samples at the best scale w.
+
+| File | Model | Config `<name>` | w | FID | Experiment | Size |
+|---|---|---|---:|---:|---|---:|
+| `stage2/xpred_ig_ditdh_s_h512_ema.pt` | **512-wide head, x-prediction + REPA head, best** | `DiTDH-S-h512-xpred-IG` | 3.0 | **4.70** | [16](experiments/16_internal_guidance.md) | 0.2 GB |
+| `stage2/vpred_ig_ditdh_s_h512_ema.pt` | 512-wide head, velocity prediction + base head | `DiTDH-S-h512-vpred-IG` | 2.5 | 5.45 | [16](experiments/16_internal_guidance.md) | 0.2 GB |
+
+The weights of experiments 15-16 were trained with code derived from [RAEv2](https://github.com/nanovisionx/RAEv2) (CC BY-NC 4.0):
+non-commercial use only (see [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)).

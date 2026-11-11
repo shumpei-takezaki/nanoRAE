@@ -202,5 +202,73 @@
  "rfm_ag_lightningdit_s_R18_w1.5": {
   "is_mean": 9.67181940041291,
   "is_std": 0.15176497471135034
+ },
+ "xpred_ditdh_s_h512_decXLgan_last": {
+  "is_mean": 9.264265279649704,
+  "is_std": 0.09360613514519756
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w1.0": {
+  "is_mean": 9.301430769634475,
+  "is_std": 0.09668012082238185
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w1.25": {
+  "is_mean": 9.438425439167652,
+  "is_std": 0.10658453893504596
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w1.5": {
+  "is_mean": 9.574030024234004,
+  "is_std": 0.12331101760366893
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w1.78": {
+  "is_mean": 9.675425506912408,
+  "is_std": 0.0715013073717334
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w2.0": {
+  "is_mean": 9.707978269297374,
+  "is_std": 0.07638498645773724
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w2.25": {
+  "is_mean": 9.715776454920082,
+  "is_std": 0.09067383813780805
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w2.5": {
+  "is_mean": 9.736423307783959,
+  "is_std": 0.10650598157864134
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w3.0": {
+  "is_mean": 9.76094070670078,
+  "is_std": 0.06495074762646941
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w3.5": {
+  "is_mean": 9.733209523993052,
+  "is_std": 0.08235810458915327
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w4.0": {
+  "is_mean": 9.71467135175254,
+  "is_std": 0.11159419527975456
+ },
+ "xpred_ig_ditdh_s_h512_decXLgan_last_w5.0": {
+  "is_mean": 9.409662485121107,
+  "is_std": 0.088177606444722
+ },
+ "vpred_ig_ditdh_s_h512_decXLgan_last_w1.0": {
+  "is_mean": 8.986854073806185,
+  "is_std": 0.08479912049210174
+ },
+ "vpred_ig_ditdh_s_h512_decXLgan_last_w2.0": {
+  "is_mean": 9.450778482662146,
+  "is_std": 0.15725859468001105
+ },
+ "vpred_ig_ditdh_s_h512_decXLgan_last_w2.5": {
+  "is_mean": 9.519387140400584,
+  "is_std": 0.18087894357658937
+ },
+ "vpred_ig_ditdh_s_h512_decXLgan_last_w3.0": {
+  "is_mean": 9.564780772678745,
+  "is_std": 0.1456428165254485
+ },
+ "vpred_ig_ditdh_s_h512_decXLgan_last_w3.5": {
+  "is_mean": 9.532098515756447,
+  "is_std": 0.15469987364982266
  }
 }

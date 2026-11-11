@@ -23,12 +23,11 @@ ImageNet validation set). "train rFID" is the same on the training set. FID comp
 | 12 | [RJF: flow matching on the sphere](experiments/12_rjf.md) | RJF Tables 3-4 | RJF makes the plain DiT with width = n trainable (Ti/1: diverged → FID 11.54) and helps less for wider models (S/1 8.70 → 8.22, head 512 7.94 → 7.81). A larger output radius helps further (head 512: 6.81 at R = 18) |
 | 13 | [RJF ablation: no Jacobi weight (RFM)](experiments/13_rfm.md) | RJF Table 3 | The geometry alone (RFM) already makes Ti/1 trainable (11.80); the Jacobi weight adds 0.1-0.3 FID, as in the paper |
 | 14 | [RJF + AutoGuidance](experiments/14_rjf_autoguidance.md) | RJF, RAE Appendix I | Best so far: LightningDiT-S/1 + RJF + AutoGuidance, FID 6.07 (head 512: 6.31; RFM + AutoGuidance: 6.11). With guidance, a larger output radius R no longer helps |
+| 15 | [RAEv2: x-prediction](experiments/15_x_prediction.md) | RAEv2 (Stage 2) | x-prediction alone does not help on this latent: FID 8.22 vs. 7.94 with velocity prediction |
+| 16 | [RAEv2: base head and internal guidance (REPA Guidance)](experiments/16_internal_guidance.md) | RAEv2 Tables 16-17 | Best so far: FID 4.70 at w = 3.0 (AutoGuidance 6.48, RJF + AutoGuidance 6.07), with a single model. The base head alone hurts (9.66 without guidance). x-prediction beats velocity only with guidance (4.70 vs. 5.45), as in the paper's Table 17 |
 
-**Coming soon**
-
-- Encoder size: DINOv2 ViT-B/4 (token dim 768).
-- Follow-ups: RAEv2, CIFAR-100.
+Next steps: see the roadmap in the [README](../README.md).
 
 See also: [pretrained weights](weights.md), [training from scratch](training.md), [changes from upstream](changes.md).
 
-Papers: RAE [arXiv 2510.11690](https://arxiv.org/abs/2510.11690), RJF (Learning on the Manifold) [arXiv 2602.10099](https://arxiv.org/abs/2602.10099).
+Papers: RAE [arXiv 2510.11690](https://arxiv.org/abs/2510.11690), RJF (Learning on the Manifold) [arXiv 2602.10099](https://arxiv.org/abs/2602.10099), RAEv2 [arXiv 2605.18324](https://arxiv.org/abs/2605.18324).

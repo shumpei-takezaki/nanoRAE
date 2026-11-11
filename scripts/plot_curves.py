@@ -1,7 +1,7 @@
 """Training curves for the experiment write-ups: loss per epoch (Stage 1: L1 and LPIPS; Stage 2: flow loss) and, for Stage 2,
 FID (10k samples) during training.
 
-Usage: uv run python scripts/plot_curves.py 01 02 04 05 06 07 08 12 13
+Usage: uv run python scripts/plot_curves.py 01 02 04 05 06 07 08 12 13 15 16
 Reads the training logs in ckpts/ when they exist and writes docs/figures/<exp>/curves.json; otherwise plots that JSON.
 Writes docs/figures/<exp>/curves.png.
 """
@@ -53,6 +53,13 @@ EXPS = {
         ("S/1 + RFM", ORANGE, "--", ["rfm_lightningdit_s_decXLgan"]),
         ("Ti/1 + RJF", BLUE, "-", ["rjf_lightningdit_ti_decXLgan"]),
         ("Ti/1 + RFM", BLUE, "--", ["rfm_lightningdit_ti_decXLgan"])]),
+    "15": ("15_x_prediction", 2, [
+        ("velocity prediction", BLUE, "-", ["ditdh_s_h512_decXLgan"]),
+        ("x-prediction", ORANGE, "-", ["xpred_ditdh_s_h512_decXLgan"])]),
+    "16": ("16_internal_guidance", 2, [
+        ("x-prediction", ORANGE, "-", ["xpred_ditdh_s_h512_decXLgan"]),
+        ("x-prediction + base head", AQUA, "-", ["xpred_ig_ditdh_s_h512_decXLgan"]),
+        ("velocity + base head", BLUE, "-", ["vpred_ig_ditdh_s_h512_decXLgan"])]),
 }
 
 EPOCH = re.compile(r"\[Epoch (\d+)\] (epoch/.*)")

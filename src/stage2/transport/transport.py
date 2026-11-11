@@ -220,7 +220,7 @@ class Transport:
         base_output = None
         if isinstance(model_output, tuple):  # RAEv2 internal guidance: (full, base), same loss on both (coefficient 1)
             model_output, base_output = model_output
-            assert self.x_pred, "the base head (internal guidance) is implemented for prediction 'x' only"
+            assert self.x_pred or self.model_type == ModelType.VELOCITY, "the base head (internal guidance) needs prediction 'x' or velocity"
         B, *_, C = xt.shape
         assert model_output.size() == (B, *xt.size()[1:-1], C)
 
@@ -233,6 +233,9 @@ class Transport:
                 terms['loss'] = terms['loss'] + terms['loss_base']
         elif self.model_type == ModelType.VELOCITY:
             terms['loss'] = mean_flat(((model_output - ut) ** 2))
+            if base_output is not None:
+                terms['loss_base'] = mean_flat(((base_output - ut) ** 2))
+                terms['loss'] = terms['loss'] + terms['loss_base']
         else: 
             _, drift_var = self.path_sampler.compute_drift(xt, t)
             sigma_t, _ = self.path_sampler.compute_sigma_t(path.expand_t_like_x(t, xt))
