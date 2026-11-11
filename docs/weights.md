@@ -92,6 +92,3 @@ Models with a REPA head (a base head after body block 4) guide themselves; no se
 |---|---|---|---:|---:|---|---:|
 | `stage2/xpred_ig_ditdh_s_h512_ema.pt` | **512-wide head, x-prediction + REPA head, best** | `DiTDH-S-h512-xpred-IG` | 3.0 | **4.70** | [16](experiments/16_internal_guidance.md) | 0.2 GB |
 | `stage2/vpred_ig_ditdh_s_h512_ema.pt` | 512-wide head, velocity prediction + base head | `DiTDH-S-h512-vpred-IG` | 2.5 | 5.45 | [16](experiments/16_internal_guidance.md) | 0.2 GB |
-
-The weights of experiments 15-16 were trained with code derived from [RAEv2](https://github.com/nanovisionx/RAEv2) (CC BY-NC 4.0):
-non-commercial use only (see [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)).

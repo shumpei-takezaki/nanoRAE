@@ -154,4 +154,4 @@ If you use the RAEv2 experiments (15-16), please also cite:
 MIT ([LICENSE](LICENSE)), as the [official RAE implementation](https://github.com/bytetriper/RAE) it builds on.
 Some third-party parts keep their own licenses, and two of them are **for non-commercial use only** (the RAEv2-derived
 x-prediction / REPA head / internal guidance / multi-layer encoder output, CC BY-NC 4.0, and `src/disc/diffaug.py` from StyleGAN-T): see
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The weights of experiments 15-16 were trained with the RAEv2-derived code; use them for non-commercial purposes only.
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The released weights are MIT.
